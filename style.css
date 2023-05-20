@@ -22,12 +22,15 @@ form{
     border-radius: 1vw;
 }z
 
-
+button li {
+    border-radius: 1vw;
+    padding-left: 2%;
+}
 
 ul{
     
     width: 75%;
-    height: 15vh;
+   
 }
 input{
    

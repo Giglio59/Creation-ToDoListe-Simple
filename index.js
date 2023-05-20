@@ -16,7 +16,18 @@ function TacheAjouter (event){
     creation.innerHTML = valeur ;
     liste.appendChild(creation);
     input.value = ""
-    }
+    
+    //Creation du bouton suprimer pour chaque li //
+
+let boutonSupprimer = document.createElement("button");
+boutonSupprimer.innerHTML = "Supprimé";
+boutonSupprimer.addEventListener("click",function(){
+this.parentNode.remove();
+});
+creation.appendChild(boutonSupprimer);
+liste.appendChild(creation);
+input.value=""
+}
 }
 
 // fonction pour supprimer les tache //
@@ -25,6 +36,8 @@ function supprimerTache(event){
     event.preventDefault();
     liste.innerHTML="";
 }
+
+
 // creation d'écouteur d'evenment //
 
 bouton.addEventListener("click",TacheAjouter);
@@ -43,7 +56,7 @@ boutonSupp.addEventListener("click",supprimerTache);
 // Ensuite je je initialise le input //
 // Et je crée mon ecouteur d'evenment click par rapport a ma fonction //
 // je créé une seconde fonction pour supprimer les tache ajouter //
-//Et ensuite son écouteur d'evement clik//
+// Et ensuite son écouteur d'evement clik//
 
 
 
