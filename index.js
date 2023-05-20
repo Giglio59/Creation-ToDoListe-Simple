@@ -68,30 +68,30 @@ boutonSupp.addEventListener("click", supprimerTache);
 // Charger les tâches si elles existent déjà
 window.addEventListener("load", chargerTaches);
 
-// Explication des tache //
+/// Je déclare mes variables selon mes ID.
+// Je crée une variable avec un tableau vide pour stocker mes informations dedans.
 
-// Je déclare mais variable selon mais ID //
-// je créé une variable avec un tableau vide pour stoker mes information dedans // 
+// Ensuite, je crée une fonction "tacheAjouter" permettant de capturer la valeur saisie et de l'ajouter à mon tableau "taches".
+// Les mises à jour réinitialisent le champ d'entrée, puis via la fonction "sauvegardeTaches", sauvegardent les tâches dans le stockage local.
 
-// Ensuite je créé une fonction tacheajouter permettant de capturais la valeur saisie de l'ajouter a mon tableau taches  
-// les mais a jour reinisialise le champd d'netréé et ensuis via la fonction sauvegardeTaches les sauvgarde dans le local stocage//
+// Je crée une deuxième fonction pour afficher mes tâches et parcourir le tableau "taches".
+// J'utilise cette fonction pour créer l'élément "li" et le bouton "supprimer" correspondant à chaque tâche.
+// J'ajoute des écouteurs d'événement aux boutons de suppression pour supprimer les tâches, mettre à jour l'affichage à l'écran et sauvegarder les tâches modifiées.
 
-// je créé une deuxiemme fonction pour afficher mes tache  et parcouri les tableau tache et créé l'lement li et le bouton supprimer 
-// la suivant avec les ecouteur d'évenement de celui ci pour supprimer les tache mais a jour l'affichage de l'écran et sauvgarde les tache mise //
+// La troisième fonction réinitialise le tableau, vide le contenu de la liste affichée et sauvegarde les tâches mises à jour.
+// Cela permet de réinitialiser toutes les tâches et de remettre l'application à son état initial.
 
-// la 3 emme fonction reinitialise le tableau vide le contenuede liste afficher et sauvegarde les tache mise ajour cea permmer de renitialiser tout les 
-// tache et de remettre l'application a son etat vide //
+// La quatrième fonction convertit le tableau "taches" en une chaîne JSON et la stocke dans le stockage local du navigateur en utilisant la clé "taches".
+// Cela permet de conserver les tâches même après la fermeture de la page.
 
-// La 4 eme fonction convertit le tableau taches en une chaîne JSON et le stocke dans le stockage local du navigateur en utilisant la clé "taches"
-// pour que les tache saison reste meme apres fermeture de la page //
+// J'utilise "event.preventDefault" pour éviter le comportement par défaut du formulaire.
 
-// j'utilise event.preventDefault pour elever le par deffaut du from //
+// La cinquième fonction permet de retransfomer les chaînes JSON stockées pour les réafficher à l'écran.
 
-//La 5 eme fonction permet de retransfomer les chaine Jeson stoquer de les re afficher a l'écran  //
+// Ensuite, j'ajoute les événements de clic.
 
-// ensuite les evenment de click // 
+// Enfin, j'utilise "window" pour recharger la fenêtre à l'aide de l'événement "load".
 
-// et le window pour recharger la fenertre a l'aide de l'evement load//
 
 
 
