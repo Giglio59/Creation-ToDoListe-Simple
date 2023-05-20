@@ -1,62 +1,100 @@
-
-// Déclaration des variable//
+// Déclaration des variables
 let input = document.getElementById("TextEntre");
 let bouton = document.getElementById("BoutonValide");
-let boutonSupp = document.getElementById("BoutonSuprimer")
+let boutonSupp = document.getElementById("BoutonSuprimer");
 let liste = document.getElementById("Liste");
+let taches = [];
 
+// Fonction pour ajouter une tâche
+function TacheAjouter(event) {
+  event.preventDefault();
+  let valeur = input.value;
+  if (valeur !== "") {
+    taches.push(valeur);
+    afficherTache();
+    input.value = "";
+    sauvegarderTaches(); // Sauvegarder les tâches dans le stockage local
+  }
+}
 
-// fonction de la tache a ajouté //
-
-function TacheAjouter (event){
-    event.preventDefault();
-    let valeur = input.value ;
-    if ( valeur !== ""){
+// Fonction pour afficher les tâches
+function afficherTache() {
+  liste.innerHTML = "";
+  taches.forEach(function(tache) {
     let creation = document.createElement("li");
-    creation.innerHTML = valeur ;
+    creation.innerHTML = tache;
+
+    // Création du bouton supprimer
+    let boutonSupprimer = document.createElement("button");
+    boutonSupprimer.innerHTML = "Supprimer";
+    boutonSupprimer.addEventListener("click", function() {
+      let index = taches.indexOf(tache);
+      if (index !== -1) {
+        taches.splice(index, 1);
+        afficherTache();
+        sauvegarderTaches(); // Sauvegarder les tâches dans le stockage local
+      }
+    });
+    creation.appendChild(boutonSupprimer);
     liste.appendChild(creation);
-    input.value = ""
-    
-    //Creation du bouton suprimer pour chaque li //
-
-let boutonSupprimer = document.createElement("button");
-boutonSupprimer.innerHTML = "Supprimé";
-boutonSupprimer.addEventListener("click",function(){
-this.parentNode.remove();
-});
-creation.appendChild(boutonSupprimer);
-liste.appendChild(creation);
-input.value=""
-}
+  });
 }
 
-// fonction pour supprimer les tache //
-
-function supprimerTache(event){
-    event.preventDefault();
-    liste.innerHTML="";
+function supprimerTache(event) {
+  event.preventDefault();
+  taches = [];
+  liste.innerHTML = "";
+  sauvegarderTaches(); // Sauvegarder les tâches dans le stockage local
 }
 
+// Sauvegarder les tâches dans le stockage local
+function sauvegarderTaches() {
+  localStorage.setItem("taches", JSON.stringify(taches));
+}
 
-// creation d'écouteur d'evenment //
+// Charger les tâches depuis le stockage local
+function chargerTaches() {
+  let tachesEnregistrees = localStorage.getItem("taches");
+  if (tachesEnregistrees) {
+    taches = JSON.parse(tachesEnregistrees);
+    afficherTache();
+  }
+}
 
-bouton.addEventListener("click",TacheAjouter);
-boutonSupp.addEventListener("click",supprimerTache);
+// Création des écouteurs d'événements
+bouton.addEventListener("click", TacheAjouter);
+boutonSupp.addEventListener("click", supprimerTache);
+
+// Charger les tâches si elles existent déjà
+window.addEventListener("load", chargerTaches);
 
 // Explication des tache //
 
 // Je déclare mais variable selon mais ID //
-// Ensuite je créé une fonction pour exectuter mon programe //
+// je créé une variable avec un tableau vide pour stoker mes information dedans // 
+
+// Ensuite je créé une fonction tacheajouter permettant de capturais la valeur saisie de l'ajouter a mon tableau taches  
+// les mais a jour reinisialise le champd d'netréé et ensuis via la fonction sauvegardeTaches les sauvgarde dans le local stocage//
+
+// je créé une deuxiemme fonction pour afficher mes tache  et parcouri les tableau tache et créé l'lement li et le bouton supprimer 
+// la suivant avec les ecouteur d'évenement de celui ci pour supprimer les tache mais a jour l'affichage de l'écran et sauvgarde les tache mise //
+
+// la 3 emme fonction reinitialise le tableau vide le contenuede liste afficher et sauvegarde les tache mise ajour cea permmer de renitialiser tout les 
+// tache et de remettre l'application a son etat vide //
+
+// La 4 eme fonction convertit le tableau taches en une chaîne JSON et le stocke dans le stockage local du navigateur en utilisant la clé "taches"
+// pour que les tache saison reste meme apres fermeture de la page //
+
 // j'utilise event.preventDefault pour elever le par deffaut du from //
-// je créé une variable pour y mettre la valeur ajouter //
-// Je crée une condition quo dit que si ma valeur ajouter n'est egaal a rien //
-// Alors je créé une variable ou j'y ajoute la reation du baise li//
-// J'ajoute ce li dans l'objet document qui et egale a la valeur ajouter //
-// Ensuite j'exectute l'odre d'apprendre cette nouvelle donné//
-// Ensuite je je initialise le input //
-// Et je crée mon ecouteur d'evenment click par rapport a ma fonction //
-// je créé une seconde fonction pour supprimer les tache ajouter //
-// Et ensuite son écouteur d'evement clik//
+
+//La 5 eme fonction permet de retransfomer les chaine Jeson stoquer de les re afficher a l'écran  //
+
+// ensuite les evenment de click // 
+
+// et le window pour recharger la fenertre a l'aide de l'evement load//
+
+
+
 
 
 

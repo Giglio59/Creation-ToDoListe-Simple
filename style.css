@@ -10,7 +10,9 @@ h1{
     justify-content: center;
 }
 
-
+li{
+   padding-right: 3%;
+}
 form{
     width:30% ;
    
